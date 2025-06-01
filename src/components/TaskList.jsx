@@ -1,11 +1,7 @@
-import { useSelector } from "react-redux";
 import Task from "./Task";
 
-const TaskList = () => {
+const TaskList = ({tasks}) => {
 
- const tasks = useSelector(state => state);
-    console.log(tasks);
-    
     return (
         <>
             <div className="row justify-content-center text-center">

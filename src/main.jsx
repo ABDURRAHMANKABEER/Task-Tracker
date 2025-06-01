@@ -1,17 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import {legacy_createStore as CreateStore } from 'redux'
 import { Provider } from 'react-redux'
-import tasks from './Reducers/taskReducer.js'
 import './index.css'
 import App from './App.jsx'
-
-const Store = CreateStore(tasks);
+import { store, persistor } from './store.js'
+import { PersistGate } from 'redux-persist/integration/react'
 
 createRoot(document.getElementById('root')).render(
-  <Provider store={Store}>
-    <StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <StrictMode>
       <App />
     </StrictMode>,
+    </PersistGate>
   </Provider>
-)
+);

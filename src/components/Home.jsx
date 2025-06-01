@@ -6,7 +6,7 @@ const Home = () => {
 
     return (
         <>
-            <Container className="justify-content-center text-center text-success mt-5">
+            <Container className="justify-content-center py-5 shadow text-center text-success mt-5">
                 <h1 className='display-3'>Task Tracker</h1>
                 <AddTask />
                 <Filter />

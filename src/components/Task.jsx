@@ -1,21 +1,26 @@
+import { useDispatch } from "react-redux"
+
 const Task = ({task}) => {
 
-    const handleStatus = (e) => {
+    const dispatch = useDispatch();
+
+    const handleStatus = () => {
         // Handling the status change logic here
-       const completed =  e.target.checked
-       console.log(task.id, completed)
+       
+       dispatch({type: 'UPDATE TASK', taskId: task.id});
     }
     const handleDelete = () => {
+
         // Handling the delete logic here
-        console.log(`Delete task with id: ${task.id}`);
-    }
+        dispatch({type: 'DELETE TASK', taskId: task.id});
+    };
 
     return (
         <>
-            <div className="container mt-3">
+            <div className="container mt-3 text-start">
                 <div className="row">
                     <div className="col-md-1 col-sm-1 col-1">
-                        <input className="rounded-0" type="checkbox" aria-label="checkbox" onChange={handleStatus}></input>
+                        <input className="rounded-0" type="checkbox" aria-label="checkbox" checked={task.completed} onChange={handleStatus}></input>
                     </div>
                     <div className="col-md-10 col-sm-10 col-10">
                         {task.text}
